@@ -4,12 +4,16 @@ export type CounterStore = {
     count: number
     increment?: () => void
     decrement?: () => void
+    isLoading?: boolean
+    setIsLoading?: (isLoading:boolean) => void
     asyncIncrement?: () => Promise<void>
 }
 
 
 export const useCounterStore = create<CounterStore>((set) => ({
     count: 0,
+    isLoading: false,
+    setIsLoading: (isLoading) => set({isLoading}), 
     increment: () =>  {
         set((state) => ({count: state.count + 1}))
     },

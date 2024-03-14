@@ -34,7 +34,7 @@ const OtherComponent = ({count}: CounterStore) => {
       <div className="card">
        
         <button onClick={asyncIncrement}>IncrementAsync</button> 
-        <button onClick={increment}>IncrementAsync</button>
+        <button onClick={increment}>Increment</button>
         <button >
           count is {count}
         </button>
