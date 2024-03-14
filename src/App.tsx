@@ -1,9 +1,9 @@
 
 import './App.css'
-import { useCounterStore } from './store'
+import { CounterStore, useCounterStore } from './store'
 
 function App() {
-  const {count} = useCounterStore()
+  const count = useCounterStore((state) => state.count)
 
   return (
     <>
@@ -17,17 +17,19 @@ function App() {
 }
 
 
-const OtherComponent = (props:any) => {
-  const { decrement, increment} = useCounterStore()
+const OtherComponent = ({count}: CounterStore) => {
+  const { decrement, increment, asyncIncrement} = useCounterStore()
   return (
     <>
     
       <h1>Vite + React + Zustand</h1>
       <div className="card">
+       
+        <button onClick={asyncIncrement}>IncrementAsync</button> 
         <button >
-          count is {props.count}
+          count is {count}
         </button>
-        <button onClick={increment}>Increment</button> <button onClick={decrement}>Decremement</button>
+        <button onClick={decrement}>Decremement</button>
        
       </div>
     
