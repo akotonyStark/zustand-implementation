@@ -2,11 +2,19 @@
 import './App.css'
 import { CounterStore, useCounterStore } from './store'
 
+const printCountValue = () => {
+  const value = useCounterStore.getState().count
+  //set state
+  //useCounterStore.setState({count: 7})
+ return (value)
+}
+
 function App() {
   const count = useCounterStore((state) => state.count)
 
   return (
     <>
+    <p>Computed count state: {printCountValue()}</p>
      <button >
           count in parent is {count}
       </button>
@@ -26,6 +34,7 @@ const OtherComponent = ({count}: CounterStore) => {
       <div className="card">
        
         <button onClick={asyncIncrement}>IncrementAsync</button> 
+        <button onClick={increment}>IncrementAsync</button>
         <button >
           count is {count}
         </button>
